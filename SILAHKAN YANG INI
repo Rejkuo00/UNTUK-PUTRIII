@@ -1,0 +1,26 @@
+import time
+
+def main():
+    print("Aloo tuan putri selamat datang di permainan kata berulang")
+    pacar_nama = input("Daftar nama dulu yaa maniss : ")
+
+    print(f"\nAl0o {pacar_nama}! Ada yang spesial untukmu.")
+    print("Program ini bakal ngirimin pesan setiap beberapa detik.\n")
+    pesan = f"Aloo kesayangan ku wahai {pacar_nama}! Aku sangat Menyayangimu ."
+
+    try:
+        while True:
+            interval_detik = int(input("Bilang aja mau berapa kali aku menyebutnyaa (detik): "))
+
+            while True:
+                kirim_pesan(pacar_nama, pesan)
+                time.sleep(interval_detik)
+    except KeyboardInterrupt:
+        print("\nMaciiiii!")
+
+def kirim_pesan(pacar_nama, pesan):
+    waktu_sekarang = time.strftime("%H:%M:%S")
+    print(f"{pesan}")
+
+if __name__ == "__main__":
+    main()
