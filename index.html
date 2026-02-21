@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>untuk kamu · iya dong 💗</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #ffe0f0 0%, #ffb6d9 100%);
+            font-family: 'Comic Neue', 'Segoe UI', cursive, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* hiasan lucu */
+        .floating-heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 2rem;
+            user-select: none;
+            pointer-events: none;
+            z-index: 0;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(8deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .heart-1 { top: 5%; left: 3%; animation-delay: 0s; }
+        .heart-2 { bottom: 12%; right: 6%; animation-delay: 1.2s; font-size: 2.7rem; }
+        .heart-3 { top: 20%; right: 15%; animation-delay: 2s; }
+        .heart-4 { bottom: 20%; left: 10%; animation-delay: 0.7s; opacity: 0.4; }
+        .heart-5 { top: 30%; left: 20%; animation-delay: 1.5s; }
+
+        .card {
+            background-color: rgba(255, 250, 245, 0.85);
+            backdrop-filter: blur(8px);
+            max-width: 700px;
+            width: 100%;
+            padding: 2rem 2rem 2.5rem;
+            border-radius: 80px 40px 80px 40px;
+            box-shadow: 0 30px 40px rgba(247, 120, 160, 0.25),
+                        0 0 0 8px #fff9 inset,
+                        0 0 0 12px #ffb3c6 inset;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            border: 3px dashed #ff80a5;
+            transition: 0.3s;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #d63e6b, #ff8eb5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.5px;
+            text-shadow: 4px 4px 0 #ffe2ed;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 1.6rem;
+            color: #b34062;
+            margin-bottom: 2rem;
+            background: #ffddea;
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            border-radius: 60px;
+            box-shadow: 0 6px 0 #ff9ebc;
+            transform: rotate(-1deg);
+            font-weight: 700;
+        }
+
+        .question-box {
+            background: #fff0f5;
+            border-radius: 70px 70px 30px 70px;
+            padding: 2rem 1.5rem;
+            margin: 1.8rem 0 2.2rem;
+            border: 6px solid white;
+            box-shadow: 0 10px 0 #ffa5c3, 0 20px 20px rgba(255, 120, 160, 0.3);
+        }
+
+        .question-text {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #a1224b;
+            margin-bottom: 0.6rem;
+            word-break: break-word;
+        }
+
+        .question-emoji {
+            font-size: 3rem;
+            line-height: 1;
+            filter: drop-shadow(2px 4px 4px #fbaac3);
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin: 2.5rem 0 1rem;
+            position: relative;
+            min-height: 100px;
+        }
+
+        .btn {
+            border: none;
+            background: white;
+            padding: 16px 40px;
+            font-size: 2rem;
+            font-weight: bold;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 9px 0 #b34e71, 0 10px 25px #ffb8cf;
+            transition: all 0.15s ease;
+            font-family: inherit;
+            border: 3px solid #ffe2f0;
+            letter-spacing: 2px;
+            transform: rotate(0deg);
+        }
+
+        .btn-yes {
+            background: #ffa0c2;
+            color: white;
+            text-shadow: 2px 2px 0 #c06a90;
+            font-size: 2.2rem;
+            padding: 18px 50px;
+            transform: scale(1);
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+            box-shadow: 0 12px 0 #b33762, 0 15px 25px #ff98bb;
+        }
+
+        /* tombol iya membesar — ukuran dasarnya dikontrol js nanti, kita kasih initial scale */
+        .btn-yes {
+            transform: scale(1);
+        }
+
+        .btn-no {
+            background: #ffe3ef;
+            color: #af4b70;
+            box-shadow: 0 7px 0 #c77497, 0 8px 18px #fcaac5;
+            padding: 16px 45px;
+            position: relative;
+            transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-no:hover {
+            background: #ffd6e8;
+            transform: translateY(-2px);
+            box-shadow: 0 9px 0 #c77497, 0 12px 25px #f78bb3;
+        }
+
+        .btn-no:active {
+            transform: translateY(5px);
+            box-shadow: 0 4px 0 #b35d81;
+        }
+
+        /* tombol tidak menghilang — kita atur lewat js dengan style visibility/display? lebih baik pakai opacity & pointer-events biar halus */
+        .btn-no-hidden {
+            opacity: 0 !important;
+            pointer-events: none !important;
+            transform: scale(0.8) !important;
+            transition: opacity 0.25s, transform 0.3s;
+        }
+
+        .message-area {
+            margin-top: 30px;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ce3b6d;
+            background: #fff0f0;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            display: inline-block;
+            border: 4px dotted #ff99bb;
+        }
+
+        .no-click-count {
+            background: #ffd3e0;
+            padding: 0.8rem 1.5rem;
+            border-radius: 100px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            border: 3px solid white;
+            margin-bottom: 12px;
+            color: #9e3d5f;
+            font-weight: 600;
+        }
+
+        .counter-badge {
+            background: #ffa5c0;
+            color: white;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 1.3rem;
+            color: #ff88aa;
+        }
+
+        /* bikin gemes */
+        .sparkle {
+            font-size: 2rem;
+            animation: twinkle 1s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+    <!-- hiasan background lucu -->
+    <div class="floating-heart heart-1">💗</div>
+    <div class="floating-heart heart-2">💖</div>
+    <div class="floating-heart heart-3">🌸</div>
+    <div class="floating-heart heart-4">💘</div>
+    <div class="floating-heart heart-5">🐰</div>
+
+    <main class="card">
+        <h1>✨ hey sayangkuu ✨</h1>
+        <div class="subtitle">💕 yang cantik / ganteng 💕</div>
+
+        <div class="question-box">
+            <div class="question-emoji">💌➡️🥺</div>
+            <div class="question-text">
+                mau nggak jadi <br> pasangan aku selamanya?
+            </div>
+            <div style="font-size: 2rem; margin-top: 8px;">😳❤️</div>
+        </div>
+
+        <!-- hitung berapa kali 'tidak' diklik -->
+        <div class="no-click-count">
+            <span>🔁 klik 'nggak' </span>
+            <span class="counter-badge" id="clickCounter">0</span>
+        </div>
+
+        <!-- area tombol -->
+        <div class="button-container" id="buttonContainer">
+            <button class="btn btn-yes" id="yesBtn" style="transform: scale(1);">iyaa 💖</button>
+            <button class="btn btn-no" id="noBtn">nggak 😭</button>
+        </div>
+
+        <!-- pesan yg berubah2 -->
+        <div id="messageBox" class="message-area">
+            🤭 ayo jujurrr
+        </div>
+
+        <!-- catatan kaki gemes -->
+        <footer>
+            <span class="sparkle">💞</span> klik "nggak" berkali-kali lihat keajaiban <span class="sparkle">💞</span>
+        </footer>
+    </main>
+
+    <script>
+        (function() {
+            // elemen2 penting
+            const noBtn = document.getElementById('noBtn');
+            const yesBtn = document.getElementById('yesBtn');
+            const clickCounterSpan = document.getElementById('clickCounter');
+            const messageBox = document.getElementById('messageBox');
+
+            // state
+            let noClickCount = 0;           // berapa kali 'nggak' diklik
+            const MAX_CLICKS = 15;           // sampai tombol no menghilang total (bisa diakali)
+            let yesScale = 1.0;               // scale awal tombol iya
+            const SCALE_STEP = 0.2;            // tiap klik nggak, iya membesar 0.2
+
+            // variabel untuk menyembunyikan no secara bertahap (dengan opacity)
+            // kita akan gunakan class 'btn-no-hidden' jika noClickCount >= MAX_CLICKS
+            // tapi sebelumnya kita buat opacity semakin turun? biar lebih dramatis: 
+            // untuk tiap klik, opacity = 1 - (noClickCount/MAX_CLICKS) , tapi minimal 0.
+            // kita atur juga pergerakan tombol no supaya menjauh (pakai transform) dan mengecil
+
+            function updateUI() {
+                // 1. update counter badge
+                clickCounterSpan.textContent = noClickCount;
+
+                // 2. hitung rasio (0 - 1) , dibatasi maks 1
+                let ratio = Math.min(noClickCount / MAX_CLICKS, 1.0);
+
+                // 3. ubah tampilan tombol NO : menghilang perlahan & menjauh
+                if (ratio >= 1.0) {
+                    // benar-benar hilang (kasih class hidden, opacity 0, tidak bisa diklik)
+                    noBtn.classList.add('btn-no-hidden');
+                    // optionally tambah properti biar makin dramatis
+                } else {
+                    // masih kelihatan tapi makin tipis dan geser
+                    noBtn.classList.remove('btn-no-hidden');
+                    // opacity turun dari 1 mendekati 0
+                    noBtn.style.opacity = (1 - ratio).toString();
+                    // efek menjauh: geser ke kanan bawah + mengecil
+                    // biar agak acak dan lucu, pakai sedikit perpindahan
+                    const translateX = ratio * 40; // px ke kanan
+                    const translateY = ratio * 30; // px ke bawah
+                    const scaleNo = 1 - ratio * 0.5; // mengecil sampai 0.5
+                    noBtn.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scaleNo})`;
+                    // supaya tidak terlalu cepat menghilang, kita juga kecilkan sedikit
+                }
+
+                // 4. tombol YES membesar seiring klik "tidak"
+                // scale = 1 + (noClickCount * SCALE_STEP) , tapi bisa juga dibatasi sampai maks tertentu misal 3.5
+                let additionalScale = noClickCount * SCALE_STEP;
+                // biar gak terlalu gede bgt, batas maks 3.8 aja
+                if (additionalScale > 3.0) additionalScale = 3.0; 
+                yesScale = 1 + additionalScale;
+                yesBtn.style.transform = `scale(${yesScale})`;
+
+                // 5. ubah pesan sesuai jumlah klik (biar makin gemes)
+                if (noClickCount === 0) {
+                    messageBox.innerHTML = '🤭 ayo dong jawab iya 🥺';
+                } else if (noClickCount === 1) {
+                    messageBox.innerHTML = '😱 masa sih nggak? klik lagi coba';
+                } else if (noClickCount === 2) {
+                    messageBox.innerHTML = '😤 ih kok nggak mauu, coba lagi ah!';
+                } else if (noClickCount === 3) {
+                    messageBox.innerHTML = '💔 aku nangis lo... klik iya dong';
+                } else if (noClickCount === 4) {
+                    messageBox.innerHTML = '😳 lihat tuh tombol iya makin gede !!';
+                } else if (noClickCount === 5) {
+                    messageBox.innerHTML = '🌟 iya nya sudah segede gaban ✨';
+                } else if (noClickCount === 6) {
+                    messageBox.innerHTML = '🤪 masih ngeyel? tombol nggak hampir raib!';
+                } else if (noClickCount === 7) {
+                    messageBox.innerHTML = '💗 iya > nggak, cepet pencet iya 💗';
+                } else if (noClickCount >= 8 && noClickCount < 12) {
+                    messageBox.innerHTML = '🔥 AKHIRNYA TOMBOL IYA MAKIN BESAR 🔥';
+                } else if (noClickCount >= 12 && noClickCount < 14) {
+                    messageBox.innerHTML = '🎀 yakin masih mau klik nggak? tinggal dikit lagi 🎀';
+                } else if (noClickCount >= MAX_CLICKS) {
+                    messageBox.innerHTML = '💖💖 SURPRISE!! TOMBOL NGAK HILANG 💖💖 <br> SKRG TINGGAL IYA!';
+                } else {
+                    messageBox.innerHTML = '🥰 aku sabar kok, klik iya dong 🥰';
+                }
+
+                // bonus: kalau sudah maks, pastikan no hidden dan iya semakin besar (tapi batas tetap)
+                if (noClickCount >= MAX_CLICKS) {
+                    noBtn.classList.add('btn-no-hidden');
+                    // biar extra: iya tetap bisa membesar (maks sudah di limit 3.8)
+                }
+            }
+
+            // event listener tombol NO
+            noBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // tambah hitungan, tapi kalau sudah mencapai max, dia tetap hidden dan ga bisa nambah? 
+                // biarkan dia bisa nambah tapi hidden tetap, tapi scale iya masih bisa naik (max sampai 15 kali)
+                if (noClickCount < MAX_CLICKS * 2) { // kasih上限 lumayan sampai 30, tapi kita batasin aja tampilannya
+                    noClickCount++;
+                }
+                // tapi agar tombol nggak muncul lagi, setelah max clicks, hidden class aktif di update.
+                // kita update setiap kali
+                updateUI();
+
+                // efek ekstra: getar dikit biar seru
+                noBtn.style.animation = 'none';
+                noBtn.offsetHeight; // reflow
+                noBtn.style.animation = 'shake 0.3s';
+                setTimeout(() => {
+                    noBtn.style.animation = '';
+                }, 300);
+            });
+
+            // tambahkan efek shake (bila belum ada)
+            const styleSheet = document.createElement("style");
+            styleSheet.innerText = `
+                @keyframes shake {
+                    0% { transform: translateX(0); }
+                    25% { transform: translateX(-7px) rotate(-2deg); }
+                    50% { transform: translateX(7px) rotate(2deg); }
+                    75% { transform: translateX(-3px) rotate(-1deg); }
+                    100% { transform: translateX(0); }
+                }
+            `;
+            document.head.appendChild(styleSheet);
+
+            // Tombol IYA — aksi romantis
+            yesBtn.addEventListener('click', function() {
+                // munculkan pesan manis, bisa juga pindah halaman? tapi kita buat alert lucu + konfirmasi
+                const messages = [
+                    '🤩 YAY! AKU TAU KOK KAMU MAU! 💖',
+                    '🏆 TERIMAKASIH SAYANGKU CINTAKU 💘',
+                    '🌸 KITA JADI PASANGAN PALING LUCU SEDUNIA! 🌸',
+                    '💕 love you 3000! 💕',
+                    '🥳 iiiiihaaaaa akhirnyaaaaa 😍'
+                ];
+                const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+                messageBox.innerHTML = '💞 ' + randomMsg + ' 💞';
+
+                // bikin ledakan konfeti imut (pake alert bias? tapi kita kasih alert ga terlalu lucu, jadi kita ubah background sementara)
+                document.body.style.background = 'linear-gradient(145deg, #ffe6f0, #ffc0e0)';
+                setTimeout(() => {
+                    document.body.style.background = 'linear-gradient(145deg, #ffe0f0 0%, #ffb6d9 100%)';
+                }, 500);
+
+                // tambah emoji terbang
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        messageBox.innerHTML += ' 💖';
+                    }, i * 200);
+                }
+
+                // supaya tombol iya tidak mengecil lagi (tetep gede)
+                // tambahin efek dia membesar sedikit lagi, supaya spesial
+                yesBtn.style.transform = `scale(${yesScale + 0.2})`;
+                setTimeout(() => {
+                    yesBtn.style.transform = `scale(${yesScale})`;
+                }, 200);
+            });
+
+            // inisialisasi
+            updateUI();
+
+            // tambahkan efek kejutan: setelah 5 detik, muncul pesan bikin penasaran
+            setTimeout(() => {
+                if (noClickCount === 0) {
+                    messageBox.innerHTML = '😚 coba klik "nggak" sekali aja.. iseng~';
+                }
+            }, 4000);
+
+            // kalau user lama gak klik apa2, kasih saran
+            let timeoutSaran;
+            function resetSaranTimer() {
+                if (timeoutSaran) clearTimeout(timeoutSaran);
+                timeoutSaran = setTimeout(() => {
+                    if (noClickCount < MAX_CLICKS) {
+                        messageBox.innerHTML = '⏰ kucing klik "nggak" loh, ayooo 😸';
+                    }
+                }, 8000);
+            }
+
+            document.body.addEventListener('click', resetSaranTimer);
+            resetSaranTimer();
+        })();
+    </script>
+
+    <!-- tambah dikit gaya lucu -->
+    <div style="position:fixed; bottom:8px; left:8px; font-size:1.8rem; opacity:0.3;">🐷</div>
+    <div style="position:fixed; top:8px; right:12px; font-size:2rem; opacity:0.3;">🍰</div>
+</body>
+</html>
