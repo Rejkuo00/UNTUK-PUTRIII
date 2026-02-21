@@ -2,470 +2,645 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>untuk kamu · iya dong 💗</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>✨ WAH BANGET · untuk kamu ✨</title>
     <style>
+        /* RESET & GLOBAL */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             min-height: 100vh;
-            background: linear-gradient(145deg, #ffe0f0 0%, #ffb6d9 100%);
-            font-family: 'Comic Neue', 'Segoe UI', cursive, sans-serif;
+            background: radial-gradient(circle at 30% 30%, #ffd3e8, #ff9eb5);
+            font-family: 'Comic Neue', 'Segoe UI', 'Arial Rounded', cursive, sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 16px;
+            padding: 8px;
             position: relative;
             overflow-x: hidden;
+            touch-action: pan-y pinch-zoom;
         }
 
-        /* hiasan lucu */
-        .floating-heart {
-            position: absolute;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 2rem;
-            user-select: none;
-            pointer-events: none;
-            z-index: 0;
-            animation: float 5s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(8deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-
-        .heart-1 { top: 5%; left: 3%; animation-delay: 0s; }
-        .heart-2 { bottom: 12%; right: 6%; animation-delay: 1.2s; font-size: 2.7rem; }
-        .heart-3 { top: 20%; right: 15%; animation-delay: 2s; }
-        .heart-4 { bottom: 20%; left: 10%; animation-delay: 0.7s; opacity: 0.4; }
-        .heart-5 { top: 30%; left: 20%; animation-delay: 1.5s; }
-
-        .card {
-            background-color: rgba(255, 250, 245, 0.85);
-            backdrop-filter: blur(8px);
-            max-width: 700px;
+        /* BACKGROUND SUPER WAH */
+        .bg-floaties {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 2rem 2rem 2.5rem;
-            border-radius: 80px 40px 80px 40px;
-            box-shadow: 0 30px 40px rgba(247, 120, 160, 0.25),
-                        0 0 0 8px #fff9 inset,
-                        0 0 0 12px #ffb3c6 inset;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floaty {
+            position: absolute;
+            font-size: clamp(2rem, 10vw, 5rem);
+            opacity: 0.2;
+            animation: wahFloat 8s infinite alternate ease-in-out;
+            filter: drop-shadow(0 10px 15px rgba(255, 80, 130, 0.3));
+        }
+
+        @keyframes wahFloat {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            100% { transform: translate(30px, -40px) rotate(15deg) scale(1.2); }
+        }
+
+        .floaty:nth-child(1) { top: 5%; left: 2%; animation-duration: 9s; }
+        .floaty:nth-child(2) { bottom: 10%; right: 3%; animation-duration: 11s; animation-delay: -2s; }
+        .floaty:nth-child(3) { top: 20%; right: 10%; animation-duration: 13s; }
+        .floaty:nth-child(4) { bottom: 20%; left: 15%; animation-duration: 10s; animation-delay: -4s; }
+        .floaty:nth-child(5) { top: 70%; left: 5%; animation-duration: 12s; }
+        .floaty:nth-child(6) { top: 40%; right: 20%; animation-duration: 14s; }
+
+        /* KARTU UTAMA SUPER CUTE */
+        .card {
+            background: rgba(255, 250, 250, 0.85);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            width: 100%;
+            max-width: 500px;
+            padding: 1.8rem 1.2rem 2rem;
+            border-radius: 70px 30px 70px 30px;
+            box-shadow: 0 35px 50px rgba(247, 80, 140, 0.4),
+                        0 0 0 6px #fff9 inset,
+                        0 0 0 12px #ffb7c9 inset,
+                        0 20px 0 #ff85aa;
             text-align: center;
             position: relative;
-            z-index: 10;
-            border: 3px dashed #ff80a5;
-            transition: 0.3s;
+            z-index: 20;
+            border: 4px dashed #ff99bb;
+            transition: transform 0.3s;
+            margin: 10px 0;
         }
 
-        h1 {
-            font-size: 2.8rem;
-            background: linear-gradient(135deg, #d63e6b, #ff8eb5);
+        .card:active {
+            transform: scale(1.02);
+        }
+
+        /* GELOMBANG CANTIK */
+        .wave-title {
+            font-size: clamp(2.2rem, 12vw, 3.5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #c72e5e, #ff97b9, #ffd3e0);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: 0.25rem;
-            letter-spacing: -0.5px;
-            text-shadow: 4px 4px 0 #ffe2ed;
-            font-weight: 800;
+            text-shadow: 6px 6px 0 #ffe2f0, 8px 8px 0 rgba(255, 150, 190, 0.5);
+            letter-spacing: -1px;
+            margin-bottom: 5px;
+            line-height: 1.1;
+            animation: wahText 2s infinite alternate;
         }
 
-        .subtitle {
-            font-size: 1.6rem;
-            color: #b34062;
-            margin-bottom: 2rem;
-            background: #ffddea;
+        @keyframes wahText {
+            from { transform: scale(1) rotate(-1deg); }
+            to { transform: scale(1.05) rotate(1deg); }
+        }
+
+        .subtitle-wah {
+            font-size: clamp(1.3rem, 6vw, 2rem);
+            background: #ffe5f0;
+            padding: 0.8rem 1.8rem;
+            border-radius: 120px;
             display: inline-block;
-            padding: 0.5rem 2rem;
-            border-radius: 60px;
-            box-shadow: 0 6px 0 #ff9ebc;
-            transform: rotate(-1deg);
+            box-shadow: 0 10px 0 #ff9ebc, 0 15px 20px #fbb0c0;
+            transform: rotate(1deg);
             font-weight: 700;
+            color: #ac2052;
+            border: 4px solid white;
+            margin-bottom: 15px;
         }
 
-        .question-box {
-            background: #fff0f5;
-            border-radius: 70px 70px 30px 70px;
-            padding: 2rem 1.5rem;
-            margin: 1.8rem 0 2.2rem;
+        /* KOTAK PERTANYAAN MENGEMBANG */
+        .question-box-wah {
+            background: linear-gradient(145deg, #ffeef4, #ffdae9);
+            border-radius: 80px 30px 80px 30px;
+            padding: 1.8rem 1rem;
+            margin: 1.5rem 0 1.8rem;
             border: 6px solid white;
-            box-shadow: 0 10px 0 #ffa5c3, 0 20px 20px rgba(255, 120, 160, 0.3);
+            box-shadow: 0 15px 0 #ff80a8, 0 25px 30px rgba(255, 100, 150, 0.5);
+            transform: perspective(500px) rotateX(1deg);
         }
 
-        .question-text {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #a1224b;
-            margin-bottom: 0.6rem;
-            word-break: break-word;
-        }
-
-        .question-emoji {
-            font-size: 3rem;
+        .big-emoji {
+            font-size: clamp(3rem, 15vw, 5rem);
+            filter: drop-shadow(0 8px 6px #ff88aa);
+            margin-bottom: 5px;
             line-height: 1;
-            filter: drop-shadow(2px 4px 4px #fbaac3);
+            animation: bounce 1.5s infinite;
         }
 
-        .button-container {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
-            margin: 2.5rem 0 1rem;
-            position: relative;
-            min-height: 100px;
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
-        .btn {
-            border: none;
-            background: white;
-            padding: 16px 40px;
-            font-size: 2rem;
-            font-weight: bold;
+        .question-wah {
+            font-size: clamp(2rem, 8vw, 3.2rem);
+            font-weight: 800;
+            color: #9e1d4a;
+            text-shadow: 3px 3px 0 #ffc1d4;
+            line-height: 1.3;
+            word-break: break-word;
+            margin: 5px 0;
+        }
+
+        /* COUNTER DENGAN STICKER */
+        .counter-wah {
+            background: #ffb9d3;
+            padding: 0.7rem 1.2rem;
             border-radius: 60px;
-            cursor: pointer;
-            box-shadow: 0 9px 0 #b34e71, 0 10px 25px #ffb8cf;
-            transition: all 0.15s ease;
-            font-family: inherit;
-            border: 3px solid #ffe2f0;
-            letter-spacing: 2px;
-            transform: rotate(0deg);
-        }
-
-        .btn-yes {
-            background: #ffa0c2;
-            color: white;
-            text-shadow: 2px 2px 0 #c06a90;
-            font-size: 2.2rem;
-            padding: 18px 50px;
-            transform: scale(1);
-            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
-            box-shadow: 0 12px 0 #b33762, 0 15px 25px #ff98bb;
-        }
-
-        /* tombol iya membesar — ukuran dasarnya dikontrol js nanti, kita kasih initial scale */
-        .btn-yes {
-            transform: scale(1);
-        }
-
-        .btn-no {
-            background: #ffe3ef;
-            color: #af4b70;
-            box-shadow: 0 7px 0 #c77497, 0 8px 18px #fcaac5;
-            padding: 16px 45px;
-            position: relative;
-            transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
-        }
-
-        .btn-no:hover {
-            background: #ffd6e8;
-            transform: translateY(-2px);
-            box-shadow: 0 9px 0 #c77497, 0 12px 25px #f78bb3;
-        }
-
-        .btn-no:active {
-            transform: translateY(5px);
-            box-shadow: 0 4px 0 #b35d81;
-        }
-
-        /* tombol tidak menghilang — kita atur lewat js dengan style visibility/display? lebih baik pakai opacity & pointer-events biar halus */
-        .btn-no-hidden {
-            opacity: 0 !important;
-            pointer-events: none !important;
-            transform: scale(0.8) !important;
-            transition: opacity 0.25s, transform 0.3s;
-        }
-
-        .message-area {
-            margin-top: 30px;
-            font-size: 2rem;
-            font-weight: 700;
-            color: #ce3b6d;
-            background: #fff0f0;
-            padding: 1rem 1.5rem;
-            border-radius: 50px;
-            display: inline-block;
-            border: 4px dotted #ff99bb;
-        }
-
-        .no-click-count {
-            background: #ffd3e0;
-            padding: 0.8rem 1.5rem;
-            border-radius: 100px;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.5rem;
-            border: 3px solid white;
-            margin-bottom: 12px;
-            color: #9e3d5f;
-            font-weight: 600;
+            gap: 15px;
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
+            border: 5px solid white;
+            margin: 10px 0 20px;
+            color: #75002b;
+            font-weight: 700;
+            box-shadow: 0 7px 0 #bf5080;
+            transform: scale(1);
         }
 
-        .counter-badge {
-            background: #ffa5c0;
+        .counter-badge-wah {
+            background: #ff4d7a;
             color: white;
             border-radius: 50%;
-            width: 42px;
-            height: 42px;
-            display: inline-flex;
+            width: 55px;
+            height: 55px;
+            display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6rem;
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-shadow: 2px 2px 0 #b3244b;
+            box-shadow: 0 0 0 4px white;
+            animation: popBadge 0.5s;
+        }
+
+        @keyframes popBadge {
+            0% { transform: scale(0.5); }
+            80% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* AREA TOMBOL SUPER GEMOY */
+        .button-wah-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(15px, 4vw, 30px);
+            margin: 25px 0 15px;
+            position: relative;
+            min-height: 130px;
+            flex-wrap: wrap;
+        }
+
+        .btn-wah {
+            border: none;
             font-weight: 800;
+            border-radius: 80px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-family: inherit;
+            border: 5px solid white;
+            letter-spacing: 2px;
+            box-shadow: 0 15px 0 #b33762, 0 20px 25px #ff98bb;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
         }
 
-        footer {
-            margin-top: 30px;
-            font-size: 1.3rem;
-            color: #ff88aa;
+        .btn-yes-wah {
+            background: #ff94b9;
+            color: white;
+            text-shadow: 3px 3px 0 #c74c7c;
+            font-size: clamp(2rem, 9vw, 3.2rem);
+            padding: 18px 30px 18px 30px;
+            transform: scale(1);
+            box-shadow: 0 18px 0 #a5305a, 0 25px 30px #ff80af;
+            flex-shrink: 0;
         }
 
-        /* bikin gemes */
-        .sparkle {
-            font-size: 2rem;
-            animation: twinkle 1s infinite alternate;
+        .btn-no-wah {
+            background: #ffe7f1;
+            color: #b33563;
+            font-size: clamp(1.8rem, 8vw, 2.8rem);
+            padding: 14px 25px 14px 25px;
+            box-shadow: 0 12px 0 #c06388, 0 15px 20px #ffa2c0;
+            transform: translate(0, 0) scale(1);
+            transition: opacity 0.3s, transform 0.3s, box-shadow 0.2s;
         }
 
-        @keyframes twinkle {
-            0% { opacity: 0.3; transform: scale(0.9); }
-            100% { opacity: 1; transform: scale(1.2); }
+        .btn-no-wah:active {
+            transform: translateY(5px) scale(0.95);
+            box-shadow: 0 7px 0 #b0527a;
+        }
+
+        .btn-no-hidden-wah {
+            opacity: 0 !important;
+            pointer-events: none !important;
+            transform: scale(0.5) translate(50px, 30px) !important;
+            transition: opacity 0.3s, transform 0.4s !important;
+        }
+
+        /* MESSAGE AREA GLITTER */
+        .message-wah {
+            margin: 20px auto 10px;
+            font-size: clamp(1.6rem, 7vw, 2.5rem);
+            font-weight: 800;
+            color: #b81b5a;
+            background: #fff3f9;
+            padding: 1rem 1.8rem;
+            border-radius: 50px;
+            display: inline-block;
+            border: 6px dotted #ff80aa;
+            box-shadow: 0 10px 0 #ffb0c8;
+            max-width: 90%;
+            word-break: break-word;
+            line-height: 1.3;
+        }
+
+        /* FOOTER KEREN */
+        .footer-wah {
+            margin-top: 25px;
+            font-size: clamp(1.3rem, 5vw, 1.9rem);
+            color: #ff4f79;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 40px;
+            padding: 8px 16px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* ANIMASI PERAYAAN WAH WAH */
+        .celebration-wah {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeOutWah 3.5s forwards;
+        }
+
+        @keyframes fadeOutWah {
+            0% { opacity: 1; backdrop-filter: blur(0); }
+            80% { opacity: 1; backdrop-filter: blur(5px); }
+            100% { opacity: 0; backdrop-filter: blur(0); }
+        }
+
+        .confetti-wah {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, #ff99bb, transparent 60%),
+                        radial-gradient(circle at 80% 70%, #ffc1d4, transparent 60%);
+            animation: pulseConfetti 1.5s infinite alternate;
+        }
+
+        @keyframes pulseConfetti {
+            from { opacity: 0.5; transform: scale(1); }
+            to { opacity: 1; transform: scale(1.1); }
+        }
+
+        .big-text-wah {
+            font-size: clamp(3rem, 15vw, 7rem);
+            font-weight: 900;
+            color: white;
+            text-shadow: 0 0 20px #ff98bb, 0 0 40px #ff4d7a, 8px 8px 0 #b82e5e;
+            transform: rotate(-5deg) scale(0);
+            animation: boomWah 0.9s forwards cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: center;
+            line-height: 1.2;
+            background: linear-gradient(145deg, gold, pink, white);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-stroke: 4px #ff3070;
+        }
+
+        @keyframes boomWah {
+            0% { transform: rotate(-10deg) scale(0); opacity: 0; }
+            50% { transform: rotate(0deg) scale(1.8); opacity: 1; }
+            100% { transform: rotate(5deg) scale(1.2); opacity: 1; }
+        }
+
+        .small-emoji-wah {
+            position: absolute;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            animation: flyWah 2.5s forwards;
+            filter: drop-shadow(0 5px 5px hotpink);
+        }
+
+        @keyframes flyWah {
+            0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+            100% { transform: translateY(-300px) rotate(720deg) scale(1.8); opacity: 0; }
+        }
+
+        /* EKSTRA WAW */
+        .glow {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #ffb3d9, transparent 80%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: glowMove 7s infinite alternate;
+        }
+
+        @keyframes glowMove {
+            from { transform: translate(-20%, -20%) scale(1); opacity: 0.3; }
+            to { transform: translate(20%, 20%) scale(1.5); opacity: 0.6; }
+        }
+
+        /* HANDHELD OPTIMIZATION */
+        @media (max-width: 400px) {
+            .card {
+                padding: 1.2rem 0.8rem 1.5rem;
+                border-radius: 50px 20px 50px 20px;
+            }
+            .btn-yes-wah {
+                padding: 14px 20px;
+            }
+            .btn-no-wah {
+                padding: 10px 18px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- hiasan background lucu -->
-    <div class="floating-heart heart-1">💗</div>
-    <div class="floating-heart heart-2">💖</div>
-    <div class="floating-heart heart-3">🌸</div>
-    <div class="floating-heart heart-4">💘</div>
-    <div class="floating-heart heart-5">🐰</div>
+    <!-- BACKGROUND GLOW & FLOATIES -->
+    <div class="bg-floaties">
+        <div class="floaty">🌸</div>
+        <div class="floaty">💖</div>
+        <div class="floaty">🦊</div>
+        <div class="floaty">🍰</div>
+        <div class="floaty">🐰</div>
+        <div class="floaty">✨</div>
+    </div>
+    <div class="glow" style="top: 10%; left: 5%;"></div>
+    <div class="glow" style="bottom: 10%; right: 5%; background: radial-gradient(circle, #ffd0e4, transparent);"></div>
 
-    <main class="card">
-        <h1>✨ hey sayangkuu ✨</h1>
-        <div class="subtitle">💕 yang cantik / ganteng 💕</div>
+    <!-- KARTU UTAMA -->
+    <main class="card" id="mainCard">
+        <div class="wave-title">💕 yoo hoo 💕</div>
+        <div class="subtitle-wah">✨ pangeran / putriku ✨</div>
 
-        <div class="question-box">
-            <div class="question-emoji">💌➡️🥺</div>
-            <div class="question-text">
-                mau nggak jadi <br> pasangan aku selamanya?
+        <!-- PERTANYAAN BESAR -->
+        <div class="question-box-wah">
+            <div class="big-emoji" id="mainEmoji">💌➡️🥺💘</div>
+            <div class="question-wah" id="questionText">
+                mau jadi <br> pasangan aku?
             </div>
-            <div style="font-size: 2rem; margin-top: 8px;">😳❤️</div>
+            <div style="font-size: clamp(2rem, 10vw, 3.5rem); margin-top: 5px;">😳❤️‍🔥</div>
         </div>
 
-        <!-- hitung berapa kali 'tidak' diklik -->
-        <div class="no-click-count">
-            <span>🔁 klik 'nggak' </span>
-            <span class="counter-badge" id="clickCounter">0</span>
+        <!-- COUNTER GEDE -->
+        <div class="counter-wah">
+            <span>✨ klik 'nggak' ✨</span>
+            <span class="counter-badge-wah" id="clickCounter">0</span>
         </div>
 
-        <!-- area tombol -->
-        <div class="button-container" id="buttonContainer">
-            <button class="btn btn-yes" id="yesBtn" style="transform: scale(1);">iyaa 💖</button>
-            <button class="btn btn-no" id="noBtn">nggak 😭</button>
+        <!-- TOMBOL SUPER BESAR -->
+        <div class="button-wah-container" id="buttonContainer">
+            <button class="btn-wah btn-yes-wah" id="yesBtn">iyaa 💖</button>
+            <button class="btn-wah btn-no-wah" id="noBtn">nggak 😭</button>
         </div>
 
-        <!-- pesan yg berubah2 -->
-        <div id="messageBox" class="message-area">
-            🤭 ayo jujurrr
+        <!-- PESAN LUCU -->
+        <div id="messageBox" class="message-wah">
+            🤭 aja aja coba klik
         </div>
 
-        <!-- catatan kaki gemes -->
-        <footer>
-            <span class="sparkle">💞</span> klik "nggak" berkali-kali lihat keajaiban <span class="sparkle">💞</span>
-        </footer>
+        <!-- FOOTER GEMES -->
+        <div class="footer-wah">
+            <span>💞</span> geser-geser tombolnya <span>💞</span>
+        </div>
     </main>
 
+    <!-- SCRIPT WAH BANGET -->
     <script>
         (function() {
-            // elemen2 penting
+            // ambil elemen
             const noBtn = document.getElementById('noBtn');
             const yesBtn = document.getElementById('yesBtn');
             const clickCounterSpan = document.getElementById('clickCounter');
             const messageBox = document.getElementById('messageBox');
+            const mainCard = document.getElementById('mainCard');
+            const mainEmoji = document.getElementById('mainEmoji');
+            const questionText = document.getElementById('questionText');
 
             // state
-            let noClickCount = 0;           // berapa kali 'nggak' diklik
-            const MAX_CLICKS = 15;           // sampai tombol no menghilang total (bisa diakali)
-            let yesScale = 1.0;               // scale awal tombol iya
-            const SCALE_STEP = 0.2;            // tiap klik nggak, iya membesar 0.2
+            let noClickCount = 0;
+            const MAX_CLICKS = 12; // lebih cepat wah
+            let yesScale = 1.0;
+            const SCALE_STEP = 0.25;
 
-            // variabel untuk menyembunyikan no secara bertahap (dengan opacity)
-            // kita akan gunakan class 'btn-no-hidden' jika noClickCount >= MAX_CLICKS
-            // tapi sebelumnya kita buat opacity semakin turun? biar lebih dramatis: 
-            // untuk tiap klik, opacity = 1 - (noClickCount/MAX_CLICKS) , tapi minimal 0.
-            // kita atur juga pergerakan tombol no supaya menjauh (pakai transform) dan mengecil
+            // fungsi restart WAH
+            function restartGame() {
+                noClickCount = 0;
+                yesScale = 1.0;
 
-            function updateUI() {
-                // 1. update counter badge
-                clickCounterSpan.textContent = noClickCount;
+                // reset tombol
+                noBtn.classList.remove('btn-no-hidden-wah');
+                noBtn.style.opacity = '1';
+                noBtn.style.transform = 'translate(0px, 0px) scale(1)';
+                yesBtn.style.transform = 'scale(1)';
 
-                // 2. hitung rasio (0 - 1) , dibatasi maks 1
-                let ratio = Math.min(noClickCount / MAX_CLICKS, 1.0);
+                // reset tampilan
+                clickCounterSpan.textContent = '0';
+                messageBox.innerHTML = '🤭 aja aja coba klik';
+                mainEmoji.innerHTML = '💌➡️🥺💘';
+                questionText.innerHTML = 'mau jadi <br> pasangan aku?';
 
-                // 3. ubah tampilan tombol NO : menghilang perlahan & menjauh
-                if (ratio >= 1.0) {
-                    // benar-benar hilang (kasih class hidden, opacity 0, tidak bisa diklik)
-                    noBtn.classList.add('btn-no-hidden');
-                    // optionally tambah properti biar makin dramatis
-                } else {
-                    // masih kelihatan tapi makin tipis dan geser
-                    noBtn.classList.remove('btn-no-hidden');
-                    // opacity turun dari 1 mendekati 0
-                    noBtn.style.opacity = (1 - ratio).toString();
-                    // efek menjauh: geser ke kanan bawah + mengecil
-                    // biar agak acak dan lucu, pakai sedikit perpindahan
-                    const translateX = ratio * 40; // px ke kanan
-                    const translateY = ratio * 30; // px ke bawah
-                    const scaleNo = 1 - ratio * 0.5; // mengecil sampai 0.5
-                    noBtn.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scaleNo})`;
-                    // supaya tidak terlalu cepat menghilang, kita juga kecilkan sedikit
+                // efek restart gemeter
+                mainCard.style.transform = 'scale(1.05)';
+                setTimeout(() => mainCard.style.transform = 'scale(1)', 150);
+            }
+
+            // PERAYAAN SUPER WAH
+            function celebrateWah() {
+                // buat container
+                const celebrationDiv = document.createElement('div');
+                celebrationDiv.className = 'celebration-wah';
+
+                // confetti effect
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti-wah';
+                celebrationDiv.appendChild(confetti);
+
+                // big love text
+                const bigText = document.createElement('div');
+                bigText.className = 'big-text-wah';
+                bigText.innerHTML = 'I LOVE U! 💖<br><span style="font-size:0.6em;">💗💗💗</span>';
+                celebrationDiv.appendChild(bigText);
+
+                // banjir emoji
+                const emojis = ['🌸', '💕', '🎉', '💗', '🥰', '✨', '💘', '🦊', '🐼', '🍭', '🌈', '💖'];
+                for (let i = 0; i < 20; i++) { // lebih banyak!
+                    const emoji = document.createElement('div');
+                    emoji.className = 'small-emoji-wah';
+                    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    emoji.style.left = Math.random() * 100 + '%';
+                    emoji.style.top = Math.random() * 100 + '%';
+                    emoji.style.animationDelay = (i * 0.08) + 's';
+                    emoji.style.fontSize = (Math.random() * 3 + 2) + 'rem';
+                    celebrationDiv.appendChild(emoji);
                 }
 
-                // 4. tombol YES membesar seiring klik "tidak"
-                // scale = 1 + (noClickCount * SCALE_STEP) , tapi bisa juga dibatasi sampai maks tertentu misal 3.5
+                document.body.appendChild(celebrationDiv);
+
+                // getar-getar WAH
+                document.body.style.animation = 'shake 0.6s';
+                setTimeout(() => document.body.style.animation = '', 600);
+
+                // hapus dan restart
+                setTimeout(() => {
+                    celebrationDiv.remove();
+                    restartGame();
+                }, 3000);
+            }
+
+            // FUNGSI UPDATE UI (dengan efek WAH)
+            function updateUI() {
+                clickCounterSpan.textContent = noClickCount;
+                let ratio = Math.min(noClickCount / MAX_CLICKS, 1.0);
+
+                // tombol NO
+                if (ratio >= 1.0) {
+                    noBtn.classList.add('btn-no-hidden-wah');
+                } else {
+                    noBtn.classList.remove('btn-no-hidden-wah');
+                    noBtn.style.opacity = (1 - ratio).toString();
+                    const translateX = ratio * 55; // lebih menjauh
+                    const translateY = ratio * 45;
+                    const scaleNo = 1 - ratio * 0.6;
+                    noBtn.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scaleNo})`;
+                }
+
+                // YES membesar
                 let additionalScale = noClickCount * SCALE_STEP;
-                // biar gak terlalu gede bgt, batas maks 3.8 aja
-                if (additionalScale > 3.0) additionalScale = 3.0; 
+                if (additionalScale > 3.5) additionalScale = 3.5;
                 yesScale = 1 + additionalScale;
                 yesBtn.style.transform = `scale(${yesScale})`;
 
-                // 5. ubah pesan sesuai jumlah klik (biar makin gemes)
-                if (noClickCount === 0) {
-                    messageBox.innerHTML = '🤭 ayo dong jawab iya 🥺';
-                } else if (noClickCount === 1) {
-                    messageBox.innerHTML = '😱 masa sih nggak? klik lagi coba';
-                } else if (noClickCount === 2) {
-                    messageBox.innerHTML = '😤 ih kok nggak mauu, coba lagi ah!';
-                } else if (noClickCount === 3) {
-                    messageBox.innerHTML = '💔 aku nangis lo... klik iya dong';
-                } else if (noClickCount === 4) {
-                    messageBox.innerHTML = '😳 lihat tuh tombol iya makin gede !!';
-                } else if (noClickCount === 5) {
-                    messageBox.innerHTML = '🌟 iya nya sudah segede gaban ✨';
-                } else if (noClickCount === 6) {
-                    messageBox.innerHTML = '🤪 masih ngeyel? tombol nggak hampir raib!';
-                } else if (noClickCount === 7) {
-                    messageBox.innerHTML = '💗 iya > nggak, cepet pencet iya 💗';
-                } else if (noClickCount >= 8 && noClickCount < 12) {
-                    messageBox.innerHTML = '🔥 AKHIRNYA TOMBOL IYA MAKIN BESAR 🔥';
-                } else if (noClickCount >= 12 && noClickCount < 14) {
-                    messageBox.innerHTML = '🎀 yakin masih mau klik nggak? tinggal dikit lagi 🎀';
-                } else if (noClickCount >= MAX_CLICKS) {
-                    messageBox.innerHTML = '💖💖 SURPRISE!! TOMBOL NGAK HILANG 💖💖 <br> SKRG TINGGAL IYA!';
-                } else {
-                    messageBox.innerHTML = '🥰 aku sabar kok, klik iya dong 🥰';
+                // pesan super variatif
+                const messages = [
+                    '🤭 aja aja coba klik',
+                    '😱 klik lagi dong, tombol iya makin gede!',
+                    '😤 masa sih nggak mauu??',
+                    '💔 aduh tombol nggak mulai ilang',
+                    '😳 waaah iya makin besar!',
+                    '🌟 segede apa coba nanti',
+                    '🤪 hampir raib tuh tombol nggak',
+                    '💗 iya >> nggak, cepetan iya',
+                    '🔥 TOMBOL IYA MAKIN GEDE 🔥',
+                    '🎀 tinggal dikit lagi loh!',
+                    '💖💖 TOMBOL NGAK NYA HILANG! 💖💖'
+                ];
+                let msgIndex = Math.min(noClickCount, messages.length - 1);
+                messageBox.innerHTML = messages[msgIndex] || '💘 aku tunggu iya 💘';
+
+                // emoji ikut berubah
+                if (noClickCount >= MAX_CLICKS) {
+                    mainEmoji.innerHTML = '😍💖✨🎉';
+                    questionText.innerHTML = 'iya dong pastinya!';
+                } else if (noClickCount > 5) {
+                    mainEmoji.innerHTML = '🥺👉👈💕';
                 }
 
-                // bonus: kalau sudah maks, pastikan no hidden dan iya semakin besar (tapi batas tetap)
                 if (noClickCount >= MAX_CLICKS) {
-                    noBtn.classList.add('btn-no-hidden');
-                    // biar extra: iya tetap bisa membesar (maks sudah di limit 3.8)
+                    noBtn.classList.add('btn-no-hidden-wah');
                 }
             }
 
-            // event listener tombol NO
+            // event tombol NO
             noBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                // tambah hitungan, tapi kalau sudah mencapai max, dia tetap hidden dan ga bisa nambah? 
-                // biarkan dia bisa nambah tapi hidden tetap, tapi scale iya masih bisa naik (max sampai 15 kali)
-                if (noClickCount < MAX_CLICKS * 2) { // kasih上限 lumayan sampai 30, tapi kita batasin aja tampilannya
+                if (noClickCount < MAX_CLICKS * 2) {
                     noClickCount++;
                 }
-                // tapi agar tombol nggak muncul lagi, setelah max clicks, hidden class aktif di update.
-                // kita update setiap kali
                 updateUI();
 
-                // efek ekstra: getar dikit biar seru
+                // efek getar
                 noBtn.style.animation = 'none';
-                noBtn.offsetHeight; // reflow
+                noBtn.offsetHeight;
                 noBtn.style.animation = 'shake 0.3s';
-                setTimeout(() => {
-                    noBtn.style.animation = '';
-                }, 300);
+                setTimeout(() => noBtn.style.animation = '', 300);
+
+                // efek tambahan di counter
+                clickCounterSpan.style.animation = 'popBadge 0.3s';
+                setTimeout(() => clickCounterSpan.style.animation = '', 300);
             });
 
-            // tambahkan efek shake (bila belum ada)
-            const styleSheet = document.createElement("style");
-            styleSheet.innerText = `
+            // event YES — LANGSUNG PERAYAAN WAH
+            yesBtn.addEventListener('click', function() {
+                celebrateWah();
+
+                // efek getar spesial
+                yesBtn.style.transform = `scale(${yesScale + 0.3})`;
+                setTimeout(() => yesBtn.style.transform = `scale(${yesScale})`, 200);
+            });
+
+            // tambah keyframes shake jika belum ada
+            const style = document.createElement('style');
+            style.innerHTML = `
                 @keyframes shake {
                     0% { transform: translateX(0); }
-                    25% { transform: translateX(-7px) rotate(-2deg); }
-                    50% { transform: translateX(7px) rotate(2deg); }
-                    75% { transform: translateX(-3px) rotate(-1deg); }
+                    20% { transform: translateX(-10px) rotate(-3deg); }
+                    40% { transform: translateX(10px) rotate(3deg); }
+                    60% { transform: translateX(-5px) rotate(-2deg); }
+                    80% { transform: translateX(5px) rotate(2deg); }
                     100% { transform: translateX(0); }
                 }
             `;
-            document.head.appendChild(styleSheet);
-
-            // Tombol IYA — aksi romantis
-            yesBtn.addEventListener('click', function() {
-                // munculkan pesan manis, bisa juga pindah halaman? tapi kita buat alert lucu + konfirmasi
-                const messages = [
-                    '🤩 YAY! AKU TAU KOK KAMU MAU! 💖',
-                    '🏆 TERIMAKASIH SAYANGKU CINTAKU 💘',
-                    '🌸 KITA JADI PASANGAN PALING LUCU SEDUNIA! 🌸',
-                    '💕 love you 3000! 💕',
-                    '🥳 iiiiihaaaaa akhirnyaaaaa 😍'
-                ];
-                const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-                messageBox.innerHTML = '💞 ' + randomMsg + ' 💞';
-
-                // bikin ledakan konfeti imut (pake alert bias? tapi kita kasih alert ga terlalu lucu, jadi kita ubah background sementara)
-                document.body.style.background = 'linear-gradient(145deg, #ffe6f0, #ffc0e0)';
-                setTimeout(() => {
-                    document.body.style.background = 'linear-gradient(145deg, #ffe0f0 0%, #ffb6d9 100%)';
-                }, 500);
-
-                // tambah emoji terbang
-                for (let i = 0; i < 5; i++) {
-                    setTimeout(() => {
-                        messageBox.innerHTML += ' 💖';
-                    }, i * 200);
-                }
-
-                // supaya tombol iya tidak mengecil lagi (tetep gede)
-                // tambahin efek dia membesar sedikit lagi, supaya spesial
-                yesBtn.style.transform = `scale(${yesScale + 0.2})`;
-                setTimeout(() => {
-                    yesBtn.style.transform = `scale(${yesScale})`;
-                }, 200);
-            });
+            document.head.appendChild(style);
 
             // inisialisasi
             updateUI();
 
-            // tambahkan efek kejutan: setelah 5 detik, muncul pesan bikin penasaran
+            // timer-timer lucu
             setTimeout(() => {
                 if (noClickCount === 0) {
-                    messageBox.innerHTML = '😚 coba klik "nggak" sekali aja.. iseng~';
+                    messageBox.innerHTML = '😚 coba klik "nggak" dulu iseng~';
                 }
             }, 4000);
 
-            // kalau user lama gak klik apa2, kasih saran
             let timeoutSaran;
             function resetSaranTimer() {
                 if (timeoutSaran) clearTimeout(timeoutSaran);
                 timeoutSaran = setTimeout(() => {
                     if (noClickCount < MAX_CLICKS) {
-                        messageBox.innerHTML = '⏰ kucing klik "nggak" loh, ayooo 😸';
+                        messageBox.innerHTML = '⏰ ayoo klik "nggak" lihat keajaiban ✨';
                     }
-                }, 8000);
+                }, 7000);
             }
 
             document.body.addEventListener('click', resetSaranTimer);
             resetSaranTimer();
+
+            // efek tambahan buat hp: sentuh tombol sedikit membesar
+            yesBtn.addEventListener('touchstart', () => {
+                yesBtn.style.transform = `scale(${yesScale + 0.1})`;
+            });
+            yesBtn.addEventListener('touchend', () => {
+                yesBtn.style.transform = `scale(${yesScale})`;
+            });
         })();
     </script>
-
-    <!-- tambah dikit gaya lucu -->
-    <div style="position:fixed; bottom:8px; left:8px; font-size:1.8rem; opacity:0.3;">🐷</div>
-    <div style="position:fixed; top:8px; right:12px; font-size:2rem; opacity:0.3;">🍰</div>
 </body>
 </html>
